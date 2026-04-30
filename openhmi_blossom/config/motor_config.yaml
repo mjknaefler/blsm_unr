@@ -23,9 +23,9 @@ motor_limits:
 
 # Neutral/home positions — upright head position based on animation data (~870 raw)
 home_positions:
-  motor_front:      870
-  motor_back_left:  870
-  motor_back_right: 870
+  motor_front:      352
+  motor_back_left:  18
+  motor_back_right: 133
   lazy_susan:       512
   ear:              761
 

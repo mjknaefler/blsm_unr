@@ -94,6 +94,7 @@ class MotorInterface(Node):
         self.motor_ids = {}
         self.motor_limits = {}
         self.motor_speeds = {}
+        self.current_positions = {}
         if config_file:
             self.load_motor_config(config_file)
         else:
@@ -134,12 +135,13 @@ class MotorInterface(Node):
 
 
         # Current joint positions (initialize to home/neutral positions)
-        home = {'lazy_susan': 512, 'motor_front': 870,
-                'motor_back_left': 870, 'motor_back_right': 870,
-                'ear': 761}
-        self.current_positions = {
-            name: home.get(name, 0) for name in self.motor_ids.keys()
-        }
+        if not self.current_positions:
+            home = {'lazy_susan': 512, 'motor_front': 352,
+                    'motor_back_left': 18, 'motor_back_right': 133,
+                    'ear': 761}
+            self.current_positions = {
+                name: home.get(name, 0) for name in self.motor_ids.keys()
+            }
 
         # Initialize motors on startup
         if DYNAMIXEL_SDK_AVAILABLE and self.port_handler:
@@ -340,6 +342,11 @@ class MotorInterface(Node):
                         f'Initialized motor {name} (ID: {motor_id}), '
                         f'limits: {dxl_min_position}-{dxl_max_position}, voltage: {volt_str}'
                     )
+                    home_pos = self.current_positions.get(name, 512)
+                    self.packet_handler.write2ByteTxRx(
+                        self.port_handler, motor_id, self.ADDR_GOAL_POSITION, home_pos
+                    )
+                    self.get_logger().info(f'Motor {name} (ID: {motor_id}) moved to home position {home_pos}')
                     if volts is not None and volts < self.VOLTAGE_WARN_THRESHOLD * 0.1:
                         self.get_logger().warn(
                             f'Motor {name} voltage {volt_str} is near the undervoltage trip point!'
@@ -353,15 +360,17 @@ class MotorInterface(Node):
                 self.get_logger().error(f'Exception initializing motor {name}: {e}')
 
     def load_motor_config(self, config_file: str):
-        """Load motor configuration from YAML file."""
         try:
             with open(config_file, 'r') as f:
                 config = yaml.safe_load(f)
                 self.motor_ids = config.get('motor_ids', {})
                 self.motor_limits = config.get('motor_limits', {})
                 self.motor_speeds = config.get('motor_speeds', {})
+                home_positions = config.get('home_positions', {})
+                self.current_positions = {
+                    name: home_positions.get(name, 512) for name in self.motor_ids.keys()
+                }
                 self.get_logger().info(f'Loaded motor config from {config_file}')
-                
         except Exception as e:
             self.get_logger().error(f'Failed to load config: {e}')
 
