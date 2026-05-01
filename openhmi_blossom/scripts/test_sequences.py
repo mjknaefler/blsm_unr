@@ -123,7 +123,7 @@ def play_sequence(name, seq_data):
                 log(msg)
                 errors_during.append(msg)
             
-            speed = max(50, min(1023, int(abs(position - HOME.get(motor_name, 512)) / duration * 0.3)))
+            speed = max(50, min(1023, int(abs(position - HOME.get(motor_name, 512)) / max(duration, 0.01) * 0.3)))
             set_position(motor_id, position, speed=speed)
             time.sleep(0.003)
         
