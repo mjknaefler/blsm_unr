@@ -6,12 +6,12 @@ idle:
       motor_back_left: 0
       motor_back_right: 113
       motor_front: 332
-  - duration: 2.0
+  - duration: 2.5
     joints:
       lazy_susan: 512
-      motor_back_left: 38
-      motor_back_right: 153
-      motor_front: 372
+      motor_back_left: 80
+      motor_back_right: 193
+      motor_front: 412
   - duration: 2.0
     joints:
       lazy_susan: 512
