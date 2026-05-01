@@ -82,6 +82,9 @@ class SequencePlayer(Node):
             self.register_sequence_callback,
             10
         )
+
+        self.interrupt_requested = False
+        self.interrupt_sequence = None
         
         self.get_logger().info('Sequence player initialized')
         self.get_logger().info(f'Loaded {len(self.sequences)} sequences')
@@ -175,7 +178,6 @@ class SequencePlayer(Node):
             self.get_logger().error(f'Error loading sequences: {e}')
     
     def play_sequence_callback(self, msg: String):
-        """Handle request to play a sequence."""
         sequence_name = msg.data
         
         with self.sequence_lock:
@@ -184,13 +186,17 @@ class SequencePlayer(Node):
                 return
             
             if self.is_playing:
-                self.get_logger().warn('Already playing a sequence')
+                # Non-idle sequences interrupt idle
+                if self.current_sequence == 'idle' and sequence_name != 'idle':
+                    self.interrupt_requested = True
+                    self.interrupt_sequence = sequence_name
+                else:
+                    self.get_logger().warn('Already playing a sequence')
                 return
             
             self.is_playing = True
             self.current_sequence = sequence_name
         
-        # Play the sequence
         self.play_sequence(sequence_name)
         
         with self.sequence_lock:
@@ -220,10 +226,22 @@ class SequencePlayer(Node):
             return
         
         # Play each keyframe
+        interrupted = False
+
         for i, keyframe in enumerate(keyframes):
             if not self.is_playing:  # Allow interruption
                 break
-
+            
+            with self.sequence_lock:
+                if self.interrupt_requested and self.interrupt_sequence:
+                    self.interrupt_requested = False
+                    next_seq = self.interrupt_sequence
+                    self.interrupt_sequence = None
+                    self.get_logger().info(f'Interrupting {sequence_name} for {next_seq}')
+                    interrupted = True
+                    self.play_sequence(next_seq)
+                    return
+            
             # Extract joint positions
             joints_dict = keyframe.get('joints', {})
             joint_names = list(joints_dict.keys())
@@ -244,6 +262,12 @@ class SequencePlayer(Node):
             # Update last known positions
             for name, pos in zip(joint_names, target_positions):
                 self.last_positions[name] = pos
+            
+        if not interrupted:
+            # Publish completion status only if not interrupted
+            status_msg.data = f'completed:{sequence_name}'
+            self.status_pub.publish(status_msg)
+            self.get_logger().info(f'Completed sequence: {sequence_name}')
             
         # Publish completion status
         status_msg.data = f'completed:{sequence_name}'
