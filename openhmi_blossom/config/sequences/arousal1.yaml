@@ -1,56 +1,56 @@
 arousal1:
   keyframes:
-  - joints:
-      motor_front: 938
-      motor_back_left: 938
-      motor_back_right: 938
-      lazy_susan: 586
-    duration: 0.0
-  - joints:
-      motor_front: 977
-      motor_back_left: 977
-      motor_back_right: 977
-      lazy_susan: 586
-    duration: 0.2
-  - joints:
-      motor_front: 938
-      motor_back_left: 938
-      motor_back_right: 938
-      lazy_susan: 586
-    duration: 0.2
-  - joints:
-      motor_front: 977
-      motor_back_left: 977
-      motor_back_right: 977
-      lazy_susan: 586
-    duration: 0.2
-  - joints:
-      motor_front: 938
-      motor_back_left: 938
-      motor_back_right: 938
-      lazy_susan: 586
-    duration: 0.2
-  - joints:
-      motor_front: 977
-      motor_back_left: 977
-      motor_back_right: 977
-      lazy_susan: 586
-    duration: 0.2
-  - joints:
-      motor_front: 938
-      motor_back_left: 938
-      motor_back_right: 938
-      lazy_susan: 586
-    duration: 0.2
-  - joints:
-      motor_front: 977
-      motor_back_left: 977
-      motor_back_right: 977
-      lazy_susan: 586
-    duration: 0.2
-  - joints:
-      motor_front: 977
-      motor_back_left: 977
-      motor_back_right: 977
-      lazy_susan: 586
-    duration: 0.2
+  - duration: 0.0
+    joints:
+      lazy_susan: 512
+      motor_back_left: 86
+      motor_back_right: 201
+      motor_front: 420
+  - duration: 0.2
+    joints:
+      lazy_susan: 512
+      motor_back_left: 125
+      motor_back_right: 240
+      motor_front: 459
+  - duration: 0.2
+    joints:
+      lazy_susan: 512
+      motor_back_left: 86
+      motor_back_right: 201
+      motor_front: 420
+  - duration: 0.2
+    joints:
+      lazy_susan: 512
+      motor_back_left: 125
+      motor_back_right: 240
+      motor_front: 459
+  - duration: 0.2
+    joints:
+      lazy_susan: 512
+      motor_back_left: 86
+      motor_back_right: 201
+      motor_front: 420
+  - duration: 0.2
+    joints:
+      lazy_susan: 512
+      motor_back_left: 125
+      motor_back_right: 240
+      motor_front: 459
+  - duration: 0.2
+    joints:
+      lazy_susan: 512
+      motor_back_left: 86
+      motor_back_right: 201
+      motor_front: 420
+  - duration: 0.2
+    joints:
+      lazy_susan: 512
+      motor_back_left: 125
+      motor_back_right: 240
+      motor_front: 459
+  - duration: 0.2
+    joints:
+      lazy_susan: 512
+      motor_back_left: 125
+      motor_back_right: 240
+      motor_front: 459

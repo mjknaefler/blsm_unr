@@ -110,7 +110,11 @@ class MotorInterface(Node):
             }
             # Fallback limits used when hardware register reads fail
             default_limits = {
-                'ear': (500, 1023),  # CW stop at 500, CCW stop at 1023
+                'lazy_susan':       (0, 1023),
+                'motor_front':      (0, 950),
+                'motor_back_left':  (0, 950),
+                'motor_back_right': (0, 950),
+                'ear':              (500, 1023),  # CW stop at 500, CCW stop at 1023
             }
 
             # Read position limits from motor hardware (CW/CCW angle limit registers)
@@ -283,21 +287,9 @@ class MotorInterface(Node):
                     )
                     continue
 
-                # Read motor position limits from memory locations 6 and 8
-                dxl_min_position, dxl_comm_result, dxl_error = self.packet_handler.read2ByteTxRx(
-                    self.port_handler, motor_id, 6  # Address for CW Angle Limit (min position)
-                )
-                dxl_max_position, dxl_comm_result, dxl_error = self.packet_handler.read2ByteTxRx(
-                    self.port_handler, motor_id, 8  # Address for CCW Angle Limit (max position)
-                )
-                
-                if (dxl_comm_result != COMM_SUCCESS) or (dxl_error != 0):
-                    self.get_logger().error(
-                        f'Failed to read position limits for motor {name} (ID: {motor_id}): '
-                        f'{self.packet_handler.getTxRxResult(dxl_comm_result)}, '
-                        f'{self.packet_handler.getRxPacketError(dxl_error)}'
-                    )
-                    continue
+                # Use limits from config — do not read from hardware since faulty motors
+                # can fail register reads and skip torque enable via continue
+                dxl_min_position, dxl_max_position = self.motor_limits.get(name, (0, 1023))
 
                 # Disable voltage-error shutdown so the motor keeps running under low voltage.
                 # Read the current shutdown bitmask and clear only the voltage bit — overheating
@@ -306,7 +298,7 @@ class MotorInterface(Node):
                     self.port_handler, motor_id, self.ADDR_SHUTDOWN
                 )
                 if comm == COMM_SUCCESS:
-                    new_shutdown = shutdown_val & ~self.SHUTDOWN_VOLTAGE_BIT
+                    new_shutdown = 0x00  # Clear all shutdown bits
                     if new_shutdown != shutdown_val:
                         self.packet_handler.write1ByteTxRx(
                             self.port_handler, motor_id, self.ADDR_SHUTDOWN, new_shutdown

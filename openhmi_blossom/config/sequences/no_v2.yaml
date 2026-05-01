@@ -1,206 +1,206 @@
 no_v2:
   keyframes:
-  - joints:
-      motor_front: 893
-      motor_back_left: 844
-      motor_back_right: 843
-      lazy_susan: 582
-    duration: 0.0
-  - joints:
-      motor_front: 891
-      motor_back_left: 845
-      motor_back_right: 843
-      lazy_susan: 583
-    duration: 0.103
-  - joints:
-      motor_front: 891
-      motor_back_left: 846
-      motor_back_right: 843
-      lazy_susan: 583
-    duration: 0.105
-  - joints:
-      motor_front: 891
-      motor_back_left: 846
-      motor_back_right: 842
-      lazy_susan: 583
-    duration: 0.105
-  - joints:
-      motor_front: 891
-      motor_back_left: 846
-      motor_back_right: 843
-      lazy_susan: 584
-    duration: 0.104
-  - joints:
-      motor_front: 890
-      motor_back_left: 846
-      motor_back_right: 843
-      lazy_susan: 585
-    duration: 0.103
-  - joints:
-      motor_front: 890
-      motor_back_left: 845
-      motor_back_right: 844
-      lazy_susan: 584
-    duration: 0.1
-  - joints:
-      motor_front: 885
-      motor_back_left: 850
-      motor_back_right: 844
-      lazy_susan: 569
-    duration: 0.105
-  - joints:
-      motor_front: 881
-      motor_back_left: 862
-      motor_back_right: 835
-      lazy_susan: 524
-    duration: 0.103
-  - joints:
-      motor_front: 887
-      motor_back_left: 860
-      motor_back_right: 831
-      lazy_susan: 473
-    duration: 0.101
-  - joints:
-      motor_front: 888
-      motor_back_left: 858
-      motor_back_right: 833
-      lazy_susan: 452
-    duration: 0.1
-  - joints:
-      motor_front: 884
-      motor_back_left: 862
-      motor_back_right: 833
-      lazy_susan: 464
-    duration: 0.102
-  - joints:
-      motor_front: 883
-      motor_back_left: 863
-      motor_back_right: 833
-      lazy_susan: 533
-    duration: 0.104
-  - joints:
-      motor_front: 874
-      motor_back_left: 864
-      motor_back_right: 841
-      lazy_susan: 673
-    duration: 0.102
-  - joints:
-      motor_front: 867
-      motor_back_left: 863
-      motor_back_right: 849
-      lazy_susan: 684
-    duration: 0.102
-  - joints:
-      motor_front: 862
-      motor_back_left: 870
-      motor_back_right: 847
-      lazy_susan: 633
-    duration: 0.106
-  - joints:
-      motor_front: 862
-      motor_back_left: 877
-      motor_back_right: 841
-      lazy_susan: 568
-    duration: 0.103
-  - joints:
-      motor_front: 864
-      motor_back_left: 871
-      motor_back_right: 844
+  - duration: 0.0
+    joints:
+      lazy_susan: 508
+      motor_back_left: 0
+      motor_back_right: 106
+      motor_front: 375
+  - duration: 0.103
+    joints:
+      lazy_susan: 509
+      motor_back_left: 0
+      motor_back_right: 106
+      motor_front: 373
+  - duration: 0.105
+    joints:
+      lazy_susan: 509
+      motor_back_left: 0
+      motor_back_right: 106
+      motor_front: 373
+  - duration: 0.105
+    joints:
+      lazy_susan: 509
+      motor_back_left: 0
+      motor_back_right: 105
+      motor_front: 373
+  - duration: 0.104
+    joints:
       lazy_susan: 510
-    duration: 0.103
-  - joints:
-      motor_front: 862
-      motor_back_left: 873
-      motor_back_right: 844
-      lazy_susan: 472
-    duration: 0.1
-  - joints:
-      motor_front: 864
-      motor_back_left: 879
-      motor_back_right: 837
-      lazy_susan: 457
-    duration: 0.101
-  - joints:
-      motor_front: 867
-      motor_back_left: 877
-      motor_back_right: 835
-      lazy_susan: 481
-    duration: 0.104
-  - joints:
-      motor_front: 872
-      motor_back_left: 874
-      motor_back_right: 833
-      lazy_susan: 544
-    duration: 0.103
-  - joints:
-      motor_front: 867
-      motor_back_left: 876
-      motor_back_right: 836
-      lazy_susan: 607
-    duration: 0.103
-  - joints:
-      motor_front: 861
-      motor_back_left: 882
-      motor_back_right: 836
-      lazy_susan: 647
-    duration: 0.1
-  - joints:
-      motor_front: 859
-      motor_back_left: 876
-      motor_back_right: 844
-      lazy_susan: 658
-    duration: 0.1
-  - joints:
-      motor_front: 860
-      motor_back_left: 875
-      motor_back_right: 844
-      lazy_susan: 602
-    duration: 0.102
-  - joints:
-      motor_front: 864
-      motor_back_left: 872
-      motor_back_right: 842
-      lazy_susan: 582
-    duration: 0.1
-  - joints:
-      motor_front: 866
-      motor_back_left: 870
-      motor_back_right: 842
-      lazy_susan: 581
-    duration: 0.102
-  - joints:
-      motor_front: 867
-      motor_back_left: 870
-      motor_back_right: 842
-      lazy_susan: 581
-    duration: 0.101
-  - joints:
-      motor_front: 864
-      motor_back_left: 870
-      motor_back_right: 844
-      lazy_susan: 580
-    duration: 0.104
-  - joints:
-      motor_front: 866
-      motor_back_left: 868
-      motor_back_right: 845
-      lazy_susan: 581
-    duration: 0.106
-  - joints:
-      motor_front: 868
-      motor_back_left: 866
-      motor_back_right: 845
-      lazy_susan: 581
-    duration: 0.103
-  - joints:
-      motor_front: 871
-      motor_back_left: 860
-      motor_back_right: 848
-      lazy_susan: 585
-    duration: 0.105
-  - joints:
-      motor_front: 870
-      motor_back_left: 861
-      motor_back_right: 847
-      lazy_susan: 585
-    duration: 0.104
+      motor_back_left: 0
+      motor_back_right: 106
+      motor_front: 373
+  - duration: 0.103
+    joints:
+      lazy_susan: 511
+      motor_back_left: 0
+      motor_back_right: 106
+      motor_front: 372
+  - duration: 0.1
+    joints:
+      lazy_susan: 510
+      motor_back_left: 0
+      motor_back_right: 107
+      motor_front: 372
+  - duration: 0.105
+    joints:
+      lazy_susan: 495
+      motor_back_left: 0
+      motor_back_right: 107
+      motor_front: 367
+  - duration: 0.103
+    joints:
+      lazy_susan: 450
+      motor_back_left: 10
+      motor_back_right: 98
+      motor_front: 363
+  - duration: 0.101
+    joints:
+      lazy_susan: 399
+      motor_back_left: 8
+      motor_back_right: 94
+      motor_front: 369
+  - duration: 0.1
+    joints:
+      lazy_susan: 378
+      motor_back_left: 6
+      motor_back_right: 96
+      motor_front: 370
+  - duration: 0.102
+    joints:
+      lazy_susan: 390
+      motor_back_left: 10
+      motor_back_right: 96
+      motor_front: 366
+  - duration: 0.104
+    joints:
+      lazy_susan: 459
+      motor_back_left: 11
+      motor_back_right: 96
+      motor_front: 365
+  - duration: 0.102
+    joints:
+      lazy_susan: 599
+      motor_back_left: 12
+      motor_back_right: 104
+      motor_front: 356
+  - duration: 0.102
+    joints:
+      lazy_susan: 610
+      motor_back_left: 11
+      motor_back_right: 112
+      motor_front: 349
+  - duration: 0.106
+    joints:
+      lazy_susan: 559
+      motor_back_left: 18
+      motor_back_right: 110
+      motor_front: 344
+  - duration: 0.103
+    joints:
+      lazy_susan: 494
+      motor_back_left: 25
+      motor_back_right: 104
+      motor_front: 344
+  - duration: 0.103
+    joints:
+      lazy_susan: 436
+      motor_back_left: 19
+      motor_back_right: 107
+      motor_front: 346
+  - duration: 0.1
+    joints:
+      lazy_susan: 398
+      motor_back_left: 21
+      motor_back_right: 107
+      motor_front: 344
+  - duration: 0.101
+    joints:
+      lazy_susan: 383
+      motor_back_left: 27
+      motor_back_right: 100
+      motor_front: 346
+  - duration: 0.104
+    joints:
+      lazy_susan: 407
+      motor_back_left: 25
+      motor_back_right: 98
+      motor_front: 349
+  - duration: 0.103
+    joints:
+      lazy_susan: 470
+      motor_back_left: 22
+      motor_back_right: 96
+      motor_front: 354
+  - duration: 0.103
+    joints:
+      lazy_susan: 533
+      motor_back_left: 24
+      motor_back_right: 99
+      motor_front: 349
+  - duration: 0.1
+    joints:
+      lazy_susan: 573
+      motor_back_left: 30
+      motor_back_right: 99
+      motor_front: 343
+  - duration: 0.1
+    joints:
+      lazy_susan: 584
+      motor_back_left: 24
+      motor_back_right: 107
+      motor_front: 341
+  - duration: 0.102
+    joints:
+      lazy_susan: 528
+      motor_back_left: 23
+      motor_back_right: 107
+      motor_front: 342
+  - duration: 0.1
+    joints:
+      lazy_susan: 508
+      motor_back_left: 20
+      motor_back_right: 105
+      motor_front: 346
+  - duration: 0.102
+    joints:
+      lazy_susan: 507
+      motor_back_left: 18
+      motor_back_right: 105
+      motor_front: 348
+  - duration: 0.101
+    joints:
+      lazy_susan: 507
+      motor_back_left: 18
+      motor_back_right: 105
+      motor_front: 349
+  - duration: 0.104
+    joints:
+      lazy_susan: 506
+      motor_back_left: 18
+      motor_back_right: 107
+      motor_front: 346
+  - duration: 0.106
+    joints:
+      lazy_susan: 507
+      motor_back_left: 16
+      motor_back_right: 108
+      motor_front: 348
+  - duration: 0.103
+    joints:
+      lazy_susan: 507
+      motor_back_left: 14
+      motor_back_right: 108
+      motor_front: 350
+  - duration: 0.105
+    joints:
+      lazy_susan: 511
+      motor_back_left: 8
+      motor_back_right: 111
+      motor_front: 353
+  - duration: 0.104
+    joints:
+      lazy_susan: 511
+      motor_back_left: 9
+      motor_back_right: 110
+      motor_front: 352
