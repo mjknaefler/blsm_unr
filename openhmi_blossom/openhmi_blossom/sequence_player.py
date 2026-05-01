@@ -199,9 +199,23 @@ class SequencePlayer(Node):
         
         self.play_sequence(sequence_name)
         
+        # Handle any interrupt that occurred
         with self.sequence_lock:
+            pending = self.interrupt_sequence
+            self.interrupt_sequence = None
+            self.interrupt_requested = False
             self.is_playing = False
             self.current_sequence = None
+
+        if pending:
+            # Start the interrupted sequence fresh
+            with self.sequence_lock:
+                self.is_playing = True
+                self.current_sequence = pending
+            self.play_sequence(pending)
+            with self.sequence_lock:
+                self.is_playing = False
+                self.current_sequence = None
     
     def play_sequence(self, sequence_name: str):
         """
@@ -235,12 +249,10 @@ class SequencePlayer(Node):
             with self.sequence_lock:
                 if self.interrupt_requested and self.interrupt_sequence:
                     self.interrupt_requested = False
-                    next_seq = self.interrupt_sequence
                     self.interrupt_sequence = None
-                    self.get_logger().info(f'Interrupting {sequence_name} for {next_seq}')
+                    self.get_logger().info(f'Interrupting {sequence_name}')
                     interrupted = True
-                    self.play_sequence(next_seq)
-                    return
+                    break  
             
             # Extract joint positions
             joints_dict = keyframe.get('joints', {})
@@ -269,10 +281,6 @@ class SequencePlayer(Node):
             self.status_pub.publish(status_msg)
             self.get_logger().info(f'Completed sequence: {sequence_name}')
             
-        # Publish completion status
-        status_msg.data = f'completed:{sequence_name}'
-        self.status_pub.publish(status_msg)
-        self.get_logger().info(f'Completed sequence: {sequence_name}')
     
     def _cubic_ease_in_out(self, t: float) -> float:
         """
